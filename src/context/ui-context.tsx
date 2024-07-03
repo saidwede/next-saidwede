@@ -52,5 +52,6 @@ const UIProvider = ({ children }: UIProviderProps) => {
     </UIContext.Provider>
   );
 };
-
+console.log('By @saidwede');
+console.log('http://github.com/saidwede');
 export { UIContext, UIProvider };
