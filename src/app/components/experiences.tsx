@@ -10,7 +10,6 @@ export default function Experiences(){
             <div className="pb-8">
                 <p>RECENT PROJECTS</p>
                 <p className="text-2xl font-bold">Explore Some Projects I&apos;m Proud Of</p>
-                <p className="text-2xl font-bold">Explore Some Projects Im Proud Of</p>
             </div>
             <div className="grid grid-cols-3 gap-4">
                 <div className="relative rounded-xl p-2 border border-dotted border-neutral-400">
