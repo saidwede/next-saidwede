@@ -24,13 +24,13 @@ export default function Home() {
     <main className="relative font-poppins">
       <SideBar />
       <a href='https://www.upwork.com/freelancers/~010659bb7544301117' target="_blank" className="fixed z-20 right-12 top-12">
-        <ShimmerButton className="shadow-2xl">
+        <ShimmerButton className="shadow-2xl hidden lg:inline-block">
           <span className="whitespace-pre-wrap text-center text-sm font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
             Hire me
           </span>
         </ShimmerButton>
       </a>
-      <div className="absolute top-0 px-20 right-0 h-screen overflow-hidden w-[calc(100vw-220px)]">
+      <div className="absolute top-0 px-20 right-0 h-screen overflow-hidden w-full lg:w-[calc(100vw-220px)]">
         <motion.div animate={{ rotate: sectionRotate[0] }} className={` absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500 `}>
           <Banner />
         </motion.div>
@@ -38,8 +38,8 @@ export default function Home() {
           <SkillsCloud />
         </motion.div>
         <motion.div animate={{ rotate: sectionRotate[2] }} className={` absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500 ${sectionRotate[2]}`}>
-          <div className="h-screen flex items-center justify-center">
-          <Experiences />
+          <div className="h-screen overflow-scroll block lg:flex items-center justify-center">
+            <Experiences />
           </div>
         </motion.div>
         <motion.div animate={{ rotate: sectionRotate[3] }} className={`h-screen absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500 ${sectionRotate[3]}`}>

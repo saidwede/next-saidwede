@@ -11,7 +11,7 @@ export default function Banner(){
     const { pos, setPos, openPos } = uiContext;
     return (
         <div className="flex justify-center h-screen ">
-            <div className="flex flex-row-reverse items-center gap-10 xl:gap-20 p-5">
+            <div className="flex flex-col-reverse justify-center lg:flex-row-reverse items-center gap-10 xl:gap-20 p-5">
                 <div className="grid gap-2">
                     <p className="text-neutral-600">Hello, I am</p>
                     <div className="font-bold text-5xl">
@@ -19,9 +19,9 @@ export default function Banner(){
                         <p>Bio Wede</p>
                     </div>
                     <p className=" max-w-[600px] text-neutral-600">A senior full stack web developer with expertise in both front-end and back-end technologies.</p>
-                    <div className="flex gap-3 pt-4">
-                        <a href="https://www.upwork.com/freelancers/~010659bb7544301117" target="_blank">
-                            <ShimmerButton className="shadow-2xl">
+                    <div className="grid grid-cols-2 lg:flex gap-3 pt-4">
+                        <a href="https://www.upwork.com/freelancers/~010659bb7544301117" className="w-full lg:w-auto inline-block" target="_blank">
+                            <ShimmerButton className="shadow-2xl w-full lg:w-auto">
                                 <span className="whitespace-pre-wrap text-center text-sm font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
                                     Hire me
                                 </span>
