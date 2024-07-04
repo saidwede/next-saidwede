@@ -20,9 +20,9 @@ export default function SideBar(){
     const [drawerOpen, setDrawerOpen] = useState(false)
     
     return (
-        <div className={`fixed w-full lg:w-auto z-40 left-0 top-0 px-4 lg:pl-16 py-4 lg:py-20 overflow-hidden lg:overflow-visible ${drawerOpen ? 'h-screen' : 'h-12'} transition-all duration-500 lg:h-screen items-center flex flex-col justify-between bg-white`}>
+        <div className={`fixed w-full lg:w-auto z-40 left-0 top-0 px-4 lg:pl-16 py-4 lg:py-20 overflow-hidden lg:overflow-visible ${drawerOpen ? 'h-full' : 'h-12'} transition-all duration-500 lg:h-screen items-center flex flex-col justify-between bg-white`}>
             <div className="w-full flex justify-between">
-                <div className="font-black text-xl cursor-pointer" onClick={() => openPos(0)}>Saïd_</div>
+                <div className="font-black text-xl cursor-pointer" onClick={() => {openPos(0); setDrawerOpen(false)}}>Saïd_</div>
                 <div className="inline-block lg:hidden" onClick={() => setDrawerOpen(!drawerOpen)}>
                     {!drawerOpen && (
                         <RiMenu5Fill className="text-2xl" />

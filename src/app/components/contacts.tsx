@@ -1,6 +1,6 @@
 export default function Contacts(){
     return (
-        <div className="h-full flex items-center justify-center px-5 lg:px-0">
+        <div className="h-screen pt-20 lg:pt-0 flex items-center justify-center px-5 lg:px-0">
             <form method="POST" className="w-[500px]" action="https://formspree.io/f/xovaqlrp" >
                 <h1 className="text-center font-bold text-xl py-3">Contact</h1>
                 <div className="grid grid-cols-2 gap-2">

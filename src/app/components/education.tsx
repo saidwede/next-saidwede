@@ -1,9 +1,9 @@
 export default function Education(){
     return (
-        <div className="pt-20 lg:pt-0 lg:flex justify-center lg:gap-10 h-full items-center px-5 lg:px-0">
+        <div className="pt-20 lg:pt-0 lg:flex h-screen justify-center lg:gap-10 items-center px-5 lg:px-0">
             <div className="pb-10">
                 <p className="uppercase text-right">Education</p>
-                <p className="text-right font-bold text-4xl max-w-[500px] text-neutral-400">Studied <span className="text-black">Electronics</span> and <span className="text-black">Computer Science</span></p>
+                <p className="text-right font-bold text-4xl lg:max-w-[500px] text-neutral-400">Studied <span className="text-black">Electronics</span> and <span className="text-black">Computer Science</span></p>
             </div>
             <div>
                 <ul className="border-black border-l-2 grid gap-20 pb-10">
