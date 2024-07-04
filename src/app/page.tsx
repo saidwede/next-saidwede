@@ -30,7 +30,7 @@ export default function Home() {
           </span>
         </ShimmerButton>
       </a>
-      <div className="absolute top-0 px-20 right-0 h-screen overflow-hidden w-full lg:w-[calc(100vw-220px)]">
+      <div className=" lg:absolute top-0 px-20 right-0 h-screen w-full lg:w-[calc(100vw-220px)]">
         <motion.div animate={{ rotate: sectionRotate[0] }} className={` absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500 `}>
           <Banner />
         </motion.div>

@@ -6,7 +6,7 @@ import { FiExternalLink } from "react-icons/fi"
 export default function Experiences(){
     const [selectedId, setSelectedId] = useState<number | null>(null)
     return (
-        <div className="pr-5 px-5 lg:px-0 pt-20 pb-5 lg:pt-0">
+        <div className="pr-5 px-5 lg:px-0 pt-20 pb-5 lg:pt-0 w-screen overflow-x-hidden">
             <div className="pb-8">
                 <p>RECENT PROJECTS</p>
                 <p className="text-2xl font-bold">Explore Some Projects I&apos;m Proud Of</p>
