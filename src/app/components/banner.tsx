@@ -50,7 +50,7 @@ export default function Banner(){
                         </div>
                     </div>
                     <div className="flex justify-center items-center h-[280px] aspect-square rounded-full ">
-                        <div className="h-[250px] aspect-square absolute border-2 border-dotted border-black rounded-full back-rotating">
+                        <div className="h-[250px] aspect-square absolute border-2 border-dotted border-neutral-400 rounded-full back-rotating">
                             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] bg-white h-[80px]"></div>
                         </div>
                         <div className="h-[250px] aspect-square relative  rounded-full">
