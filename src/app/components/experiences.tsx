@@ -11,7 +11,7 @@ export default function Experiences(){
                 <p>RECENT PROJECTS</p>
                 <p className="text-2xl font-bold">Explore Some Projects I&apos;m Proud Of</p>
             </div>
-            <div className="grid lg:grid-cols-3 gap-4">
+            <div className="grid lg:grid-cols-3 gap-4 lg:pr-5">
                 <div className="relative rounded-xl p-2 border border-dotted border-neutral-400">
                     <Image className="w-full rounded-lg" width={300} height={300} alt="ersy" src="/img/ersy.jpg" />
                     <div className="absolute z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-full w-full opacity-0 hover:opacity-100 rounded-xl">
