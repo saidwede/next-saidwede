@@ -68,7 +68,7 @@ export default function SideBar(){
                         </a>
                     </DockIcon>
                     <DockIcon>
-                        <a href="https://facebook.com/" target="_blank" className="h-10 w-10 bg-black text-white rounded-full inline-flex justify-center items-center text-2xl">
+                        <a href="https://www.facebook.com/said.biowede.5" target="_blank" className="h-10 w-10 bg-black text-white rounded-full inline-flex justify-center items-center text-2xl">
                             <TbBrandFacebookFilled />
                         </a>
                     </DockIcon>
