@@ -24,7 +24,7 @@ export default function Contacts(){
                 </label>
                 <label >
                     <span className="text-xs">Message</span>
-                    <textarea className="border h-40 w-full outline-none px-2 py-1 text-sm" name="message" id="" required></textarea>
+                    <textarea className="border h-40 w-full outline-none px-2 py-1 text-sm" name="message" required></textarea>
                 </label>
                 <div className="flex justify-end">
                     <button type="submit" className="h-10 bg-black text-white w-36">Send</button>

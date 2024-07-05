@@ -55,7 +55,7 @@ export default function SideBar(){
                     </li>
                 </ul>
             </div>
-            <div onClick={() => setDrawerOpen(false)} className="relative w-full pb-10">
+            <div onClick={() => setDrawerOpen(false)} className="relative w-full pb-10 lg:pb-0">
                 <Dock className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-0 border-none">
                     <DockIcon>
                         <a href="https://github.com/saidwede" target="_blank" className="h-10 w-10 bg-black text-white rounded-full inline-flex justify-center items-center text-2xl">
