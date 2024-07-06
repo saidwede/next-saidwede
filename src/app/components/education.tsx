@@ -21,7 +21,6 @@ export default function Education(){
                     </li>
                 </ul>
             </div>
-            
         </div>
     )
 }
