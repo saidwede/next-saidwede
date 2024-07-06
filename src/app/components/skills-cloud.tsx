@@ -41,9 +41,9 @@ export function SkillsCloud() {
       </div>
       <div className="grid gap-2">
         <p className="uppercase font-light text-xl">Skills</p>
-        <h2 className="text-4xl font-semibold">My Favorite Technologies</h2>
-        <p className="max-w-[500px] my-2 text-neutral-600">
-        I have a passion for working with cutting-edge technologies that drive innovation and efficiency. My expertise includes a diverse range of tools and platforms that I leverage to create impactful solutions.
+        <h2 className="text-8xl font-bold">What I like <br /> to work with</h2>
+        <p className="max-w-[700px] font-extralight text-4xl my-2 text-black">
+        My expertise includes a diverse range of tools and platforms that I leverage to create impactful solutions.
         </p>
         
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm">

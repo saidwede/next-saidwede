@@ -1,5 +1,5 @@
 "use client"
-import { useContext, useState } from "react";
+import { useContext, useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import ShimmerButton from "./components/magicui/shimmer-button";
@@ -19,8 +19,32 @@ export default function Home() {
   if (!uiContext) {
     throw new Error('SomeComponent must be used within a MyProvider');
   }
-  const { sectionRotate, setSectionRotate } = uiContext;
-  
+  const { sectionRotate, setSectionRotate, openPos, pos } = uiContext;
+  const [animating, setAnimating] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const handleScroll = () => {
+    if (containerRef.current) {
+      const { scrollTop, scrollHeight, clientHeight } = containerRef.current;
+      console.log(scrollTop, scrollHeight, clientHeight, pos)
+      if((scrollTop + clientHeight) >= scrollHeight && !animating) {
+        if(pos < 4){
+          openPos(pos+1)
+        }
+        setAnimating(true)
+      }
+      else if(scrollTop == 0 && !animating) {
+        if(pos > 0){
+          openPos(pos-1)
+        }
+        setAnimating(true)
+      }
+      else{
+        setAnimating(false)
+      }
+    }
+  };
+
   return (
     <main className="relative font-poppins">
       <SideBar />
@@ -31,26 +55,26 @@ export default function Home() {
           </span>
         </ShimmerButton>
       </a>
-      <div className="absolute top-0 px-20 right-0 h-screen overflow-y-auto w-screen overflow-x-hidden lg:w-[calc(100vw-220px)]">
-        <motion.div animate={{ rotate: sectionRotate[0] }} className={`absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500 `}>
+      <div ref={containerRef} onScroll={handleScroll} className="absolute top-0 px-20 right-0 h-screen overflow-y-auto w-screen overflow-x-hidden lg:w-[calc(100vw-220px)]">
+        <motion.div animate={{ rotate: sectionRotate[0] }} transition={{duration: 1, type: 'tween'}} onAnimationStart={() => setAnimating(true)} onAnimationEnd={() => setAnimating(false)} className={`absolute min-h-screnn bg-white w-full top-0 left-0 origin-top-left transition-all duration-500 `}>
           <Banner />
         </motion.div>
-        <motion.div animate={{ rotate: sectionRotate[1] }} className={` absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500`}>
+        <motion.div animate={{ rotate: sectionRotate[1] }} transition={{duration: 1, type: 'tween'}} onAnimationStart={() => setAnimating(true)} onAnimationEnd={() => setAnimating(false)} className={` absolute min-h-screnn bg-white w-full top-0 left-0 origin-top-left transition-all duration-500`}>
           <SkillsCloud />
         </motion.div>
-        <motion.div animate={{ rotate: sectionRotate[2] }} className={`min-h-screen absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500`}>
+        <motion.div animate={{ rotate: sectionRotate[2] }} transition={{duration: 1, type: 'tween'}} onAnimationStart={() => setAnimating(true)} onAnimationEnd={() => setAnimating(false)} className={`min-h-screnn absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500`}>
           <div className="h-screen block lg:flex items-center justify-center">
             <Experiences />
           </div>
         </motion.div>
-        <motion.div animate={{ rotate: sectionRotate[3] }} className={`min-h-screen absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500`}>
+        <motion.div animate={{ rotate: sectionRotate[3] }} transition={{duration: 1, type: 'tween'}} onAnimationStart={() => setAnimating(true)} onAnimationEnd={() => setAnimating(false)} className={`min-h-screnn absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500`}>
           <Education />
         </motion.div>
-        <motion.div animate={{ rotate: sectionRotate[4] }} className={`min-h-screen absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500`}>
+        <motion.div animate={{ rotate: sectionRotate[4] }} transition={{duration: 1, type: 'tween'}} onAnimationStart={() => setAnimating(true)} onAnimationEnd={() => setAnimating(false)} className={`min-h-screnn absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500`}>
           <Contacts />
         </motion.div>
 
-        <motion.div animate={{ rotate: sectionRotate[5] }} className={`min-h-screen z-30 absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500`}>
+        <motion.div animate={{ rotate: sectionRotate[5] }} transition={{duration: 1, type: 'tween'}} onAnimationStart={() => setAnimating(true)} onAnimationEnd={() => setAnimating(false)} className={`min-h-screen z-30 absolute bg-white w-full top-0 left-0 origin-top-left transition-all duration-500`}>
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
             <div role="status">
                 <svg aria-hidden="true" className="w-10 h-10 text-gray-200 animate-spin dark:text-gray-200 fill-black" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
