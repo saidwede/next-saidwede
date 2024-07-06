@@ -32,9 +32,8 @@ export default function SideBar(){
                     )}
                     
                 </div>
-            </div>
-            
-            <div onClick={() => setDrawerOpen(false)}>
+            </div> 
+            <div className={`${!drawerOpen ? 'pt-12 lg:pt-0' : ''}`} onClick={() => setDrawerOpen(false)}>
                 <ul className="flex flex-col items-center justify-center gap-20">
                     <li onClick={() => openPos(0)}>
                     <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">About me
