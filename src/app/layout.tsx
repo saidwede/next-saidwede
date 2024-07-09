@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { UIProvider } from "@/context/ui-context";
 import { GoogleAnalytics } from '@next/third-parties/google'
+import { Analytics } from '@vercel/analytics/react';
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({
         <UIProvider>
         {children}
         </UIProvider>
+        <Analytics />
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID || ''}/>
     </html>

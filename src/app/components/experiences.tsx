@@ -40,7 +40,7 @@ const projects = [
 export default function Experiences(){
     const [selectedId, setSelectedId] = useState<number | null>(null)
     return (
-        <div className="pr-5 pb-10 lg:pb-0 h-full px-5 lg:px-0 pt-20 lg:pt-0 w-screen overflow-x-hidden lg:flex flex-col justify-center">
+        <div className="pr-5 pb-40 lg:pb-0 h-full px-5 lg:px-0 pt-20 lg:pt-0 w-screen overflow-x-hidden lg:flex flex-col justify-center">
             <div className="pb-8">
                 <p>RECENT PROJECTS</p>
                 <p className="text-2xl font-bold">Explore Some Projects I&apos;m Proud Of</p>

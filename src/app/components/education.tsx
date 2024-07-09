@@ -5,7 +5,7 @@ export default function Education(){
                 <p className="uppercase text-right">Education</p>
                 <p className="text-right font-bold text-6xl lg:max-w-[500px] text-neutral-400">Studied <span className="text-black">Electronics</span> and <span className="text-black">Computer Science</span></p>
             </div>
-            <div>
+            <div className="pb-40 lg:pb-0">
                 <ul className="border-black border-l-2 grid gap-20 lg:gap-30 pb-10">
                     <li className="relative pl-10 -translate-x-2 before:absolute before:top-0 before:left-0 before:inline-block before:h-4 before:w-4 before:bg-black before:rounded-full">
                         <p className="text-2xl font-normal"><span className="font-black">Master</span>  of Science (MSc) in Artificial Intelligence (AI)</p>
