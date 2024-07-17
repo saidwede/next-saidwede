@@ -19,7 +19,7 @@ export default function Banner(){
                         <p>Bio Wede</p>
                     </div>
                     <p className=" max-w-[600px] text-black text-2xl lg:text-4xl font-extralight">A senior Full-Stack Developer with expertise in both front-end and back-end technologies.</p>
-                    <div className="grid grid-cols-2 lg:flex gap-3 pt-4">
+                    <div className="grid grid-cols-2 lg:flex gap-3 pt-4 pb-20 lg:pb-0">
                         <a href="https://www.upwork.com/freelancers/~010659bb7544301117" className="w-full lg:w-auto inline-block" target="_blank">
                             <ShimmerButton className="shadow-2xl w-full lg:w-auto">
                                 <span className="whitespace-pre-wrap text-center text-sm font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">

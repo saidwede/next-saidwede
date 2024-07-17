@@ -46,7 +46,7 @@ export function SkillsCloud() {
         My expertise includes a diverse range of tools and platforms that I leverage to create impactful solutions.
         </p>
         
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 text-sm pb-10 lg:pb-0">
           <div className="inline-block py-3 border border-neutral-500 border-dotted text-center">Next.js</div>
           <div className="inline-block py-3 border border-neutral-500 border-dotted text-center">Vue.js</div>
           <div className="inline-block py-3 border border-neutral-500 border-dotted text-center">Node.js</div>
