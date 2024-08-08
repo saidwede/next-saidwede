@@ -16,19 +16,19 @@ const projects = [
         skills: ['Vue.js','Firebase','MySQL', 'PHP']
     },
     {
+        url: "https://skilldrive.vercel.app",
+        image: "/img/skilldrive.png",
+        skills: ['Next.js', 'Firebase','MagicUI','Framer']
+    },
+    {
         url: "http://alarmvalet.com/?k=a0000",
         image: "/img/alarm.png",
         skills: ['Vue.js','PHP','MySQL']
     },
     {
-        url: "https://zoidberg.vercel.app",
-        image: "/img/zoidberg.png",
-        skills: ['AI','Scikit Learn','Next.js', 'Tensor Flow']
-    },
-    {
-        url: "",
-        image: "/img/robot.png",
-        skills: ['Next.js']
+        url: "https://f-chat.vercel.app",
+        image: "/img/fchat2.png",
+        skills: ['Next.js','MagicUI','Framer']
     },
     {
         url: "",
