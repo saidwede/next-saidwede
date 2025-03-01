@@ -11,14 +11,14 @@ const projects = [
         skills: ['JavaScript','JQuery','PHP', 'MySQL']
     },
     {
+        url: "https://root-capture.vercel.app",
+        image: "/img/root_capture.png",
+        skills: ['React.js','Three.js','R3F']
+    },
+    {
         url: "https://dahomeybook.com",
         image: "/img/dahomey.jpg",
         skills: ['Vue.js','Firebase','MySQL', 'PHP']
-    },
-    {
-        url: "https://skilldrive.vercel.app",
-        image: "/img/skilldrive.png",
-        skills: ['Next.js', 'Firebase','MagicUI','Framer']
     },
     {
         url: "http://alarmvalet.com/?k=a0000",
@@ -26,13 +26,13 @@ const projects = [
         skills: ['Vue.js','PHP','MySQL']
     },
     {
-        url: "https://f-chat.vercel.app",
-        image: "/img/fchat2.png",
-        skills: ['Next.js','MagicUI','Framer']
+        url: "https://skilldrive.vercel.app",
+        image: "/img/skilldrive.png",
+        skills: ['Next.js', 'Firebase','MagicUI','Framer']
     },
     {
-        url: "",
-        image: "/img/said.png",
+        url: "https://f-chat.vercel.app",
+        image: "/img/fchat2.png",
         skills: ['Next.js','MagicUI','Framer']
     }
 ]
