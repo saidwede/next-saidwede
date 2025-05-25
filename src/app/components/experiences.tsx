@@ -16,7 +16,7 @@ const projects = [
         skills: ['React.js','Three.js','R3F']
     },
     {
-        url: "https://dahomeybook.com",
+        url: "https://dahomeybook.vercel.app",
         image: "/img/dahomey.jpg",
         skills: ['Vue.js','Firebase','MySQL', 'PHP']
     },
