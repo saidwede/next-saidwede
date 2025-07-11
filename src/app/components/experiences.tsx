@@ -6,6 +6,11 @@ import WebProject from "./web-project"
 
 const projects = [
     {
+        url: "https://grafy.me",
+        image: "/img/grafyme.png",
+        skills: ['Next.js', 'Firebase','Konvajs']
+    },
+    {
         url: "https://ersy.com",
         image: "/img/ersy.jpg",
         skills: ['JavaScript','JQuery','PHP', 'MySQL']
@@ -24,11 +29,6 @@ const projects = [
         url: "http://alarmvalet.com/?k=a0000",
         image: "/img/alarm.png",
         skills: ['Vue.js','PHP','MySQL']
-    },
-    {
-        url: "https://skilldrive.vercel.app",
-        image: "/img/skilldrive.png",
-        skills: ['Next.js', 'Firebase','MagicUI','Framer']
     },
     {
         url: "https://f-chat.vercel.app",
