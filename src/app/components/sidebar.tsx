@@ -41,13 +41,13 @@ export default function SideBar(){
                         <div className={`h-px transition-all duration-500 bg-black ${pos == 0 ? 'w-full' : 'w-0'} `}></div>
                     </Link>
                     </li>
-                    <li onClick={() => openPos(1)}>
-                    <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Skills
-                    <div className={`h-px transition-all duration-500 bg-black ${pos == 1 ? 'w-full' : 'w-0'} `}></div></Link>
-                    </li>
                     <li onClick={() => openPos(2)}>
                     <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Experiences
                     <div className={`h-px transition-all duration-500 bg-black ${pos == 2 ? 'w-full' : 'w-0'} `}></div></Link>
+                    </li>
+                    <li onClick={() => openPos(1)}>
+                    <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Skills
+                    <div className={`h-px transition-all duration-500 bg-black ${pos == 1 ? 'w-full' : 'w-0'} `}></div></Link>
                     </li>
                     <li onClick={() => openPos(3)}>
                     <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Education
