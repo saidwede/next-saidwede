@@ -11,14 +11,14 @@ const projects = [
         skills: ['Next.js', 'Firebase','Konvajs']
     },
     {
-        url: "https://ersy.com/artists",
-        image: "/img/ersy.jpg",
-        skills: ['JavaScript','JQuery','PHP', 'MySQL']
-    },
-    {
         url: "https://root-capture.vercel.app",
         image: "/img/root_capture.png",
         skills: ['React.js','Three.js','R3F']
+    },
+    {
+        url: "https://ersy.com/artists",
+        image: "/img/ersy.jpg",
+        skills: ['JavaScript','JQuery','PHP', 'MySQL']
     },
     {
         url: "https://dahomeybook.vercel.app",
