@@ -11,7 +11,7 @@ const projects = [
         skills: ['Next.js', 'Firebase','Konvajs']
     },
     {
-        url: "https://ersy.com",
+        url: "https://ersy.com/artists",
         image: "/img/ersy.jpg",
         skills: ['JavaScript','JQuery','PHP', 'MySQL']
     },
