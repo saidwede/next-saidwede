@@ -1,7 +1,12 @@
+"use client"
+
 import Image from "next/image"
 import ShimmerButton from "./magicui/shimmer-button"
 import { UIContext } from "@/context/ui-context";
 import { useContext } from "react";
+import { BiChevronDown } from "react-icons/bi";
+import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Banner(){
     const uiContext = useContext(UIContext)
@@ -9,24 +14,37 @@ export default function Banner(){
         throw new Error('SomeComponent must be used within a MyProvider');
     }
     const { pos, setPos, openPos } = uiContext;
+
+    const [collapsed, setCollapsed] = useState(true);
+    const toggleCollapse = () => {
+        setCollapsed(!collapsed);
+    }
     return (
         <div className="flex justify-center h-screen pb-40 lg:pb-0">
             <div className="flex flex-col-reverse justify-end lg:justify-center lg:flex-row-reverse items-center gap-10 xl:gap-20 p-5 pt-20 lg:pt-0 pb-20 lg:pb-0">
                 <div className="grid gap-2">
                     <p className="text-black">Hello, I am</p>
-                    <div className="font-bold text-7xl lg:text-9xl">
+                    <motion.div initial={{ fontSize: "8rem" }} animate={{ fontSize: collapsed ? "8rem" : "5rem" }} transition={{ duration: 0.7 }} className="font-bold leading-none">
                         <p>Saïd</p>
                         <p>Bio Wede</p>
-                    </div>
-                    <p className=" max-w-[600px] text-black text-2xl lg:text-4xl font-extralight">A senior Full-Stack Developer with expertise in both front-end and back-end technologies.</p>
+                    </motion.div>
+                    <motion.p initial={{ fontSize: "1.9rem" }} animate={{ fontSize: collapsed ? "1.9rem" : "1.3rem" }} transition={{ duration: 0.7 }} className=" max-w-[600px] text-black leading-tight  font-extralight">
+                        An AI/ML Engineer and senior Full-Stack Developer building AI-powered digital solutions.
+                        <span onClick={toggleCollapse} className="ml-2 font-bold text-xl inline-flex justify-center items-center bg-black rounded-full p-1 cursor-pointer">
+                            <BiChevronDown className="animate-bounce text-white text-2xl" />
+                        </span>
+                    </motion.p>
+                    <motion.p initial={{ height: "0px" }} animate={{ height: collapsed ? "0px" : "fit-content" }} transition={{ duration: 0.7 }} className=" max-w-[600px] text-black leading-normal font-extralight  overflow-hidden pt-3">
+                        I am an AI/ML Engineer and Senior Full-Stack Developer with a Master’s degree in Artificial Intelligence. I specialize in building intelligent, scalable, and user-centric applications by combining modern web development with machine learning expertise. With strong experience across front-end and back-end technologies, I design end-to-end solutions that integrate AI models, data-driven systems, and automation. My work spans from developing robust platforms to deploying AI-powered features such as predictive analytics, recommendation systems, and agentic RAG solutions using OpenAI and Google models.
+                    </motion.p>
                     <div className="grid grid-cols-2 lg:flex gap-3 pt-4 pb-20 lg:pb-0">
-                        <a href="https://www.upwork.com/freelancers/~010659bb7544301117" className="w-full lg:w-auto inline-block" target="_blank">
+                        {/* <a href="https://www.upwork.com/freelancers/~010659bb7544301117" className="w-full lg:w-auto inline-block" target="_blank">
                             <ShimmerButton className="shadow-2xl w-full lg:w-auto">
                                 <span className="whitespace-pre-wrap text-center text-sm font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
                                     Hire me
                                 </span>
                             </ShimmerButton>
-                        </a>
+                        </a> */}
                         <ShimmerButton className="shadow-2xl" onClick={() => openPos(4)}>
                             <span className="whitespace-pre-wrap text-center text-sm font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
                                 Contact me

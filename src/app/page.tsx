@@ -48,13 +48,13 @@ export default function Home() {
   return (
     <main className="relative font-poppins">
       <SideBar />
-      <a href='https://www.upwork.com/freelancers/~010659bb7544301117' target="_blank" className="fixed z-20 right-12 top-12">
-        <ShimmerButton className="shadow-2xl hidden lg:inline-block">
+      <div className="fixed z-20 right-12 top-12">
+        <ShimmerButton className="shadow-2xl" onClick={() => openPos(4)}>
           <span className="whitespace-pre-wrap text-center text-sm font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-            Hire me
+            Contact me
           </span>
         </ShimmerButton>
-      </a>
+      </div>
       <div ref={containerRef} className="absolute top-0 px-20 right-0 h-screen overflow-y-auto w-screen overflow-x-hidden lg:w-[calc(100vw-220px)]">
         <motion.div animate={{ rotate: sectionRotate[0] }} transition={{duration: .4, type: 'easeIn'}} onAnimationStart={() => setAnimating(true)} onAnimationEnd={() => setAnimating(false)} className={`absolute min-h-screnn bg-white w-full top-0 left-0 origin-top-left transition-all duration-500 `}>
           <Banner />
