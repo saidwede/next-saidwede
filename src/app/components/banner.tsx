@@ -5,7 +5,7 @@ import ShimmerButton from "./magicui/shimmer-button"
 import { UIContext } from "@/context/ui-context";
 import { useContext } from "react";
 import { BiChevronDown } from "react-icons/bi";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function Banner(){
@@ -14,6 +14,16 @@ export default function Banner(){
         throw new Error('SomeComponent must be used within a MyProvider');
     }
     const { pos, setPos, openPos } = uiContext;
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 1024);
+        }
+        checkMobile();
+        window.addEventListener('resize', checkMobile);
+        return () => window.removeEventListener('resize', checkMobile);
+    }, []);
 
     const [collapsed, setCollapsed] = useState(true);
     const toggleCollapse = () => {
@@ -24,14 +34,14 @@ export default function Banner(){
             <div className="flex flex-col-reverse justify-end lg:justify-center lg:flex-row-reverse items-center gap-10 xl:gap-20 p-5 pt-20 lg:pt-0 pb-20 lg:pb-0">
                 <div className="grid gap-2">
                     <p className="text-black">Hello, I am</p>
-                    <motion.div initial={{ fontSize: "8rem" }} animate={{ fontSize: collapsed ? "8rem" : "5rem" }} transition={{ duration: 0.7 }} className="font-bold leading-none">
+                    <motion.div initial={{ fontSize: isMobile ? "4rem" : "8rem" }} animate={{ fontSize: collapsed ? isMobile ? "4rem" : "8rem" : isMobile ? "2rem" : "5rem" }} transition={{ duration: 0.7 }} className="font-bold leading-none">
                         <p>Saïd</p>
                         <p>Bio Wede</p>
                     </motion.div>
-                    <motion.p initial={{ fontSize: "1.9rem" }} animate={{ fontSize: collapsed ? "1.9rem" : "1.3rem" }} transition={{ duration: 0.7 }} className=" max-w-[600px] text-black leading-tight  font-extralight">
+                    <motion.p initial={{ fontSize: isMobile ? "1.3rem" : "1.9rem" }} animate={{ fontSize: collapsed ? isMobile ? "1.3rem" : "1.9rem" : isMobile ? "1rem" : "1.3rem" }} transition={{ duration: 0.7 }} className=" max-w-[600px] text-black leading-tight  font-extralight">
                         An AI/ML Engineer and senior Full-Stack Developer building AI-powered digital solutions.
                         <span onClick={toggleCollapse} className="ml-2 font-bold text-xl inline-flex justify-center items-center bg-black rounded-full p-1 cursor-pointer">
-                            <BiChevronDown className="animate-bounce text-white text-2xl" />
+                            <BiChevronDown className="animate-bounce text-white text-xl lg:text-2xl" />
                         </span>
                     </motion.p>
                     <motion.p initial={{ height: "0px" }} animate={{ height: collapsed ? "0px" : "fit-content" }} transition={{ duration: 0.7 }} className=" max-w-[600px] text-black leading-normal font-extralight  overflow-hidden pt-3">

@@ -10,6 +10,7 @@ import { UIContext } from "@/context/ui-context";
 import { RiMenu5Fill } from "react-icons/ri";
 import { IoCloseOutline } from "react-icons/io5";
 import { useState } from "react";
+import ShimmerButton from "./magicui/shimmer-button";
 
 export default function SideBar(){
     const uiContext = useContext(UIContext)
@@ -20,21 +21,28 @@ export default function SideBar(){
     const [drawerOpen, setDrawerOpen] = useState(false)
     
     return (
-        <div className={`fixed w-full lg:w-auto z-40 left-0 top-0 px-4 lg:pl-16 py-4 lg:py-20 overflow-hidden lg:overflow-visible ${drawerOpen ? 'h-full' : 'h-12'} transition-all duration-500 lg:h-screen items-center flex flex-col justify-between bg-white`}>
+        <div className={`fixed w-full lg:w-auto z-40 left-0 top-0 px-4 lg:pl-16 py-4 lg:py-20 overflow-hidden lg:overflow-visible ${drawerOpen ? 'h-full' : 'h-20'} transition-all duration-500 lg:h-screen items-center flex flex-col justify-between bg-white`}>
             <div className="w-full flex justify-between">
-                <div className="font-black text-lg lg:text-3xl cursor-pointer" onClick={() => {openPos(0); setDrawerOpen(false)}}>Saïd_</div>
-                <div className="inline-block lg:hidden" onClick={() => setDrawerOpen(!drawerOpen)}>
-                    {!drawerOpen && (
-                        <RiMenu5Fill className="text-2xl" />
-                    )}
-                    {drawerOpen && (
-                        <IoCloseOutline className="text-2xl" />
-                    )}
-                    
+                <div className="flex items-center gap-5">
+                    <div className="inline-block lg:hidden" onClick={() => setDrawerOpen(!drawerOpen)}>
+                        {!drawerOpen && (
+                            <RiMenu5Fill className="text-2xl" />
+                        )}
+                        {drawerOpen && (
+                            <IoCloseOutline className="text-2xl" />
+                        )}
+                        
+                    </div>
+                    <div className="font-black text-2xl lg:text-3xl cursor-pointer" onClick={() => {openPos(0); setDrawerOpen(false)}}>Saïd_</div>
                 </div>
+                <ShimmerButton className="block lg:hidden" onClick={() => openPos(4)}>
+                    <span className="whitespace-pre-wrap text-center text-sm font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
+                    Contact me
+                    </span>
+                </ShimmerButton>
             </div>
             
-            <div onClick={() => setDrawerOpen(false)}>
+            <div onClick={() => setDrawerOpen(false)} className="pt-2">
                 <ul className="flex flex-col items-center justify-center gap-20">
                     <li onClick={() => openPos(0)}>
                     <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">About me

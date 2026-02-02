@@ -48,7 +48,7 @@ export default function Home() {
   return (
     <main className="relative font-poppins">
       <SideBar />
-      <div className="fixed z-20 right-12 top-12">
+      <div className="hidden lg:block fixed z-20 right-12 top-12">
         <ShimmerButton className="shadow-2xl" onClick={() => openPos(4)}>
           <span className="whitespace-pre-wrap text-center text-sm font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
             Contact me
