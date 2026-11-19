@@ -36,14 +36,14 @@ export default function SideBar() {
   return (
     <div
       data-scroll-lock={drawerOpen ? "true" : undefined}
-      className={`fixed w-full lg:w-auto left-0 top-0 px-4 lg:pl-16 lg:pr-4 lg:py-20 lg:overflow-visible transition-all duration-500 lg:h-screen flex flex-col justify-between items-center bg-white ${
+      className={`fixed w-full lg:w-[220px] left-0 top-0 px-4 lg:px-2 lg:py-20 lg:overflow-visible transition-all duration-500 lg:h-screen flex flex-col justify-between items-center bg-white ${
         drawerOpen
           ? "h-[100dvh] z-50 overflow-y-auto"
           : "h-16 z-40 overflow-hidden"
       }`}
     >
       {/* Top Bar */}
-      <div className="w-full h-16 lg:h-auto shrink-0 flex items-center justify-between">
+      <div className="w-full h-16 lg:h-auto shrink-0 flex items-center justify-between lg:justify-center">
         <div className="flex items-center gap-5">
           <button
             type="button"
