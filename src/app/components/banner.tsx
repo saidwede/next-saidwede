@@ -49,8 +49,8 @@ export default function Banner(){
                     <motion.p initial={{ height: "0px" }} animate={{ height: collapsed ? "0px" : "fit-content" }} transition={{ duration: 0.7 }} className=" max-w-[600px] text-black leading-normal font-extralight  overflow-hidden pt-3">
                         {t.banner.bio}
                     </motion.p>
-                    <div className="grid grid-cols-2 lg:flex gap-3 pt-4 pb-20 lg:pb-0">
-                        <ShimmerButton className="px-4 py-2 shadow-xl" onClick={() => openPos(6)}>
+                    <div className="flex items-center gap-3 pt-4 pb-20 lg:pb-0">
+                        <ShimmerButton className="block lg:flex px-4 py-2 lg:shadow-xl" onClick={() => openPos(6)}>
                             <span className="whitespace-pre-wrap text-center text-xs font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-sm">
                                 {t.banner.contactMe}
                             </span>

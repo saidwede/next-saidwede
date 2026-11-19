@@ -13,7 +13,7 @@ export default function LanguageSwitcher() {
     <div
       role="group"
       aria-label={t.common.languageSwitcher}
-      className="fixed z-40 right-5 bottom-5 lg:right-12 lg:bottom-8 inline-flex items-center rounded-full bg-white/85 backdrop-blur-md p-1"
+      className="fixed z-40 right-5 bottom-5 lg:right-12 lg:bottom-8 inline-flex items-center bg-white/85 backdrop-blur-md p-1"
     >
       {LOCALES.map((code) => {
         const isActive = locale === code;
@@ -23,7 +23,7 @@ export default function LanguageSwitcher() {
             type="button"
             onClick={() => setLocale(code)}
             aria-pressed={isActive}
-            className={`relative px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider rounded-full transition-colors duration-200 ${
+            className={`relative px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wider transition-colors duration-200 ${
               isActive ? "text-white" : "text-neutral-500 hover:text-black"
             }`}
           >

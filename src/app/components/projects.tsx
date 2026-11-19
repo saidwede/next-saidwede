@@ -15,6 +15,7 @@ import { FiExternalLink } from "react-icons/fi";
 import { IoChevronBack, IoChevronForward, IoClose } from "react-icons/io5";
 import { useLanguage } from "@/context/language-context";
 import { ProjectId } from "@/i18n/translations";
+import ShimmerButton from "./magicui/shimmer-button";
 
 export interface SteppedSectionHandle {
   step: (direction: 1 | -1) => boolean;
@@ -33,18 +34,19 @@ const projects: ProjectConfig[] = [
     id: "grafyme",
     url: "https://grafy.me",
     images: [
-      "/img/grafyme/photo01.png",
-      "/img/grafyme/photo02.png",
-      "/img/grafyme/photo03.png",
       "/img/grafyme/photo04.png",
+      "/img/grafyme/photo01.png",
       "/img/grafyme/photo05.png",
-      "/img/grafyme/photo06.png",
     ],
   },
   {
     id: "ersy",
     url: "https://ersy.com/artists",
-    images: ["/img/ersy.jpg"],
+    images: [
+      "/img/ersy/photo1.png",
+      "/img/ersy/photo2.png",
+      "/img/ersy/photo3.png",
+    ],
   },
   {
     id: "gogochap",
@@ -546,10 +548,18 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
                   href={project.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-1 inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-black text-white text-sm font-medium hover:bg-neutral-800 transition-colors"
+                  className="mt-1 inline-block"
                 >
-                  <span>{t.projects.visitProject}</span>
-                  <FiExternalLink size={16} />
+                  <ShimmerButton
+                    type="button"
+                    tabIndex={-1}
+                    className="block lg:flex px-4 py-2 lg:shadow-xl"
+                  >
+                    <span className="inline-flex items-center gap-2 whitespace-pre-wrap text-center text-xs font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-sm">
+                      <span>{t.projects.visitProject}</span>
+                      <FiExternalLink size={14} />
+                    </span>
+                  </ShimmerButton>
                 </a>
               </div>
             </motion.div>
