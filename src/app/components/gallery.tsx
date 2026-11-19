@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoClose, IoChevronBack, IoChevronForward } from 'react-icons/io5';
+import { useLanguage } from '@/context/language-context';
 
 const IMAGES = [
     { src: '/img/gallery/IMG_16.jpg', alt: 'IMG_16' },
@@ -28,6 +29,7 @@ const IMAGES = [
 ];
 
 export default function Gallery() {
+    const { t } = useLanguage();
     const [selectedImageIndex, setSelectedImageIndex] = useState<number | null>(null);
 
     const openLightbox = (index: number) => {
@@ -93,7 +95,7 @@ export default function Gallery() {
                                 />
                                 <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                                     <span className="text-white font-medium px-4 py-2 bg-white/20 backdrop-blur-md rounded-full border border-white/30 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                        View Image
+                                        {t.gallery.viewImage}
                                     </span>
                                 </div>
                             </motion.div>

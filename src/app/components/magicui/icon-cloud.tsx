@@ -25,8 +25,9 @@ export const cloudProps: Omit<ICloud, "children"> = {
     depth: 1,
     wheelZoom: false,
     imageScale: 2,
-    activeCursor: "default",
-    tooltip: "native",
+    activeCursor: "pointer",
+    tooltip: "div",
+    tooltipClass: "tctooltip",
     initial: [0.1, -0.1],
     clickToFront: 500,
     tooltipDelay: 0,
@@ -37,13 +38,19 @@ export const cloudProps: Omit<ICloud, "children"> = {
   },
 };
 
-export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
+export const renderCustomIcon = (
+  icon: SimpleIcon,
+  theme: string,
+  label?: string,
+) => {
   const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
   const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
   const minContrastRatio = theme === "dark" ? 2 : 1.2;
+  const displayTitle =
+    label || (icon.title && icon.title !== "icon" ? icon.title : icon.slug);
 
   return renderSimpleIcon({
-    icon,
+    icon: { ...icon, title: displayTitle },
     bgHex,
     fallbackHex,
     minContrastRatio,
@@ -52,18 +59,26 @@ export const renderCustomIcon = (icon: SimpleIcon, theme: string) => {
       href: undefined,
       target: undefined,
       rel: undefined,
+      title: displayTitle,
       onClick: (e: any) => e.preventDefault(),
+    },
+    imgProps: {
+      alt: displayTitle,
     },
   });
 };
 
 export type DynamicCloudProps = {
   iconSlugs: string[];
+  iconLabels?: Record<string, string>;
 };
 
 type IconData = Awaited<ReturnType<typeof fetchSimpleIcons>>;
 
-export default function IconCloud({ iconSlugs }: DynamicCloudProps) {
+export default function IconCloud({
+  iconSlugs,
+  iconLabels,
+}: DynamicCloudProps) {
   const [data, setData] = useState<IconData | null>(null);
   const { theme } = useTheme();
 
@@ -71,18 +86,49 @@ export default function IconCloud({ iconSlugs }: DynamicCloudProps) {
     fetchSimpleIcons({ slugs: iconSlugs }).then(setData);
   }, [iconSlugs]);
 
+  useEffect(() => {
+    const hideTooltip = () => {
+      document.querySelectorAll<HTMLElement>(".tctooltip").forEach((el) => {
+        el.style.display = "none";
+      });
+    };
+    window.addEventListener("wheel", hideTooltip, { passive: true });
+    return () => {
+      window.removeEventListener("wheel", hideTooltip);
+      hideTooltip();
+    };
+  }, []);
+
   const renderedIcons = useMemo(() => {
     if (!data) return null;
 
     return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, theme || "light"),
+      renderCustomIcon(icon, theme || "light", iconLabels?.[icon.slug]),
     );
-  }, [data, theme]);
+  }, [data, theme, iconLabels]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const root = document.documentElement;
+    root.style.setProperty("--tt-x", `${e.clientX}px`);
+    root.style.setProperty("--tt-y", `${e.clientY}px`);
+  };
+
+  const handleMouseLeave = () => {
+    document.querySelectorAll<HTMLElement>(".tctooltip").forEach((el) => {
+      el.style.display = "none";
+    });
+  };
 
   return (
-    // @ts-ignore
-    <Cloud {...cloudProps}>
-      <>{renderedIcons}</>
-    </Cloud>
+    <div
+      className="w-full"
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+    >
+      {/* @ts-ignore */}
+      <Cloud {...cloudProps}>
+        <>{renderedIcons}</>
+      </Cloud>
+    </div>
   );
 }

@@ -7,6 +7,8 @@ import Banner from "./components/banner";
 import SideBar from "./components/sidebar";
 import { SkillsCloud } from "./components/skills-cloud";
 import { UIContext } from "@/context/ui-context";
+import { useLanguage } from "@/context/language-context";
+import LanguageSwitcher from "./components/language-switcher";
 import Projects, { SteppedSectionHandle } from "./components/projects";
 import Education from "./components/education";
 import Contacts from "./components/contacts";
@@ -114,6 +116,7 @@ export default function Home() {
     throw new Error("Home must be used within a UIProvider");
   }
   const { sectionRotate, openPos, pos } = uiContext;
+  const { t } = useLanguage();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
@@ -526,12 +529,13 @@ export default function Home() {
     <main className="relative h-screen w-screen overflow-hidden font-poppins">
       <SideBar />
       <div className="hidden lg:block fixed z-20 right-12 top-12">
-        <ShimmerButton className="shadow-2xl" onClick={() => openPos(6)}>
-          <span className="whitespace-pre-wrap text-center text-sm font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-            Contact me
+        <ShimmerButton className="px-4 py-2 shadow-xl" onClick={() => openPos(6)}>
+          <span className="whitespace-pre-wrap text-center text-xs font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-sm">
+            {t.nav.contactMe}
           </span>
         </ShimmerButton>
       </div>
+      <LanguageSwitcher />
       <div
         ref={containerRef}
         className="absolute top-0 right-0 h-screen overflow-hidden w-screen lg:w-[calc(100vw-220px)]"
@@ -579,7 +583,7 @@ export default function Home() {
                   fill="currentFill"
                 />
               </svg>
-              <span className="sr-only">Loading...</span>
+              <span className="sr-only">{t.common.loading}</span>
             </div>
           </div>
         </motion.div>

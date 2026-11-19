@@ -13,26 +13,24 @@ import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
 import { FiExternalLink } from "react-icons/fi";
 import { IoChevronBack, IoChevronForward, IoClose } from "react-icons/io5";
+import { useLanguage } from "@/context/language-context";
+import { ProjectId } from "@/i18n/translations";
 
 export interface SteppedSectionHandle {
   step: (direction: 1 | -1) => boolean;
   resetToEdge: (edge: "start" | "end") => void;
 }
 
-interface ProjectItem {
-  title: string;
-  description: string;
+interface ProjectConfig {
+  id: ProjectId;
   url: string;
   images: string[];
-  skills: string[];
   portrait?: boolean;
 }
 
-const projects: ProjectItem[] = [
+const projects: ProjectConfig[] = [
   {
-    title: "Grafy.me",
-    description:
-      "An interactive browser-based visual design and graphics creation platform featuring a responsive canvas workspace, real-time asset management, and cloud persistence.",
+    id: "grafyme",
     url: "https://grafy.me",
     images: [
       "/img/grafyme/photo01.png",
@@ -42,52 +40,36 @@ const projects: ProjectItem[] = [
       "/img/grafyme/photo05.png",
       "/img/grafyme/photo06.png",
     ],
-    skills: ["Next.js", "Firebase", "Konvajs"],
   },
   {
-    title: "Ersy Artists",
-    description:
-      "A comprehensive artist discovery and biography directory backed by a relational PHP and MySQL architecture with fast search and dynamic browsing.",
+    id: "ersy",
     url: "https://ersy.com/artists",
     images: ["/img/ersy.jpg"],
-    skills: ["JavaScript", "JQuery", "PHP", "MySQL"],
   },
   {
-    title: "GOGO Chap",
-    description:
-      "A meal delivery mobile application built with Flutter, connecting customers with local restaurants through a fast menu browsing, ordering, and delivery experience.",
+    id: "gogochap",
     url: "https://www.gogochap.com/telecharger",
     images: ["/img/gogochap/Home.png", "/img/gogochap/Menus.png"],
-    skills: ["Flutter", "Dart", "Mobile"],
     portrait: true,
   },
   {
-    title: "Alyah Nightwear",
-    description:
-      "An elegant e-commerce storefront for a luxury nightwear brand, showcasing collections with editorial visuals, smooth catalog browsing, and a refined shopping experience.",
+    id: "alyahnightwear",
     url: "https://www.alyahnightwear.com",
     images: [
       "/img/alyahnightwear/photo01.png",
       "/img/alyahnightwear/photo02.png",
       "/img/alyahnightwear/photo03.png",
     ],
-    skills: ["E-Commerce", "UI/UX", "Web"],
   },
   {
-    title: "Root Capture",
-    description:
-      "An interactive 3D web experience and spatial visualization tool built with React Three Fiber, delivering smooth real-time rendering directly in the browser.",
+    id: "root-capture",
     url: "https://root-capture.vercel.app",
     images: ["/img/root_capture.png"],
-    skills: ["React.js", "Three.js", "R3F"],
   },
   {
-    title: "Alarm Valet",
-    description:
-      "A clean web platform for managing and monitoring alarm systems, providing responsive device controls and status workflows built on Vue.js and PHP.",
+    id: "alarm-valet",
     url: "http://alarmvalet.com/?k=a0000",
     images: ["/img/alarm.png"],
-    skills: ["Vue.js", "PHP", "MySQL"],
   },
 ];
 
@@ -346,6 +328,7 @@ function ProjectBentoGrid({
 }
 
 const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
+  const { t } = useLanguage();
   const [activeIndex, setActiveIndex] = useState(0);
   const [slideDirection, setSlideDirection] = useState<1 | -1>(1);
   const [lightboxImageIndex, setLightboxImageIndex] = useState<number | null>(
@@ -359,7 +342,9 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
     setMounted(true);
   }, []);
 
-  const project = projects[activeIndex];
+  const projectConfig = projects[activeIndex];
+  const projectCopy = t.projects.items[projectConfig.id];
+  const project = { ...projectConfig, ...projectCopy };
 
   const goToProject = useCallback((nextIndex: number, dir?: 1 | -1) => {
     const current = activeIndexRef.current;
@@ -431,7 +416,7 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
               <button
                 type="button"
                 onClick={() => setLightboxImageIndex(null)}
-                aria-label="Close preview"
+                aria-label={t.projects.closePreview}
                 className="absolute top-6 right-6 text-white/70 hover:text-white text-3xl z-50 p-2 transition-colors"
               >
                 <IoClose />
@@ -448,7 +433,7 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
                           project.images.length
                       );
                     }}
-                    aria-label="Previous image"
+                    aria-label={t.projects.previousImage}
                     className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white text-4xl sm:text-5xl z-50 p-2 transition-all hover:scale-110"
                   >
                     <IoChevronBack />
@@ -461,7 +446,7 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
                         (lightboxImageIndex + 1) % project.images.length
                       );
                     }}
-                    aria-label="Next image"
+                    aria-label={t.projects.nextImage}
                     className="absolute right-4 top-1/2 -translate-y-1/2 text-white/60 hover:text-white text-4xl sm:text-5xl z-50 p-2 transition-all hover:scale-110"
                   >
                     <IoChevronForward />
@@ -501,10 +486,10 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
       {/* Header */}
       <div>
         <p className="uppercase tracking-widest text-xs font-medium text-neutral-500">
-          Recent Projects
+          {t.projects.kicker}
         </p>
         <h2 className="text-2xl lg:text-3xl font-bold text-black mt-1">
-          Explore Some Projects I&apos;m Proud Of
+          {t.projects.heading}
         </h2>
       </div>
 
@@ -563,7 +548,7 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
                   rel="noopener noreferrer"
                   className="mt-1 inline-flex items-center gap-2.5 px-5 py-2.5 rounded-full bg-black text-white text-sm font-medium hover:bg-neutral-800 transition-colors"
                 >
-                  <span>Visit Project</span>
+                  <span>{t.projects.visitProject}</span>
                   <FiExternalLink size={16} />
                 </a>
               </div>
@@ -579,8 +564,8 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
             type="button"
             onClick={() => goToProject(activeIndex - 1, -1)}
             disabled={activeIndex === 0}
-            aria-label="Previous project"
-            className="h-9 w-9 rounded-full border border-neutral-200 flex items-center justify-center text-black transition-colors hover:border-black disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-neutral-200"
+            aria-label={t.projects.previousProject}
+            className="h-9 w-9 rounded-full flex items-center justify-center text-black transition-colors hover:bg-neutral-100 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent"
           >
             <IoChevronBack size={16} />
           </button>
@@ -588,18 +573,19 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
           <div
             className="flex items-center gap-2 px-2"
             role="tablist"
-            aria-label="Project selector"
+            aria-label={t.projects.projectSelector}
           >
             {projects.map((item, idx) => {
               const isActive = idx === activeIndex;
+              const itemTitle = t.projects.items[item.id].title;
               return (
                 <button
-                  key={item.title}
+                  key={item.id}
                   type="button"
                   role="tab"
                   aria-selected={isActive}
-                  aria-label={`Show ${item.title}`}
-                  title={item.title}
+                  aria-label={`${t.projects.showProject} ${itemTitle}`}
+                  title={itemTitle}
                   onClick={() => goToProject(idx)}
                   className={`h-2.5 rounded-full transition-all duration-300 ${
                     isActive
@@ -615,8 +601,8 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
             type="button"
             onClick={() => goToProject(activeIndex + 1, 1)}
             disabled={activeIndex === projects.length - 1}
-            aria-label="Next project"
-            className="h-9 w-9 rounded-full border border-neutral-200 flex items-center justify-center text-black transition-colors hover:border-black disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:border-neutral-200"
+            aria-label={t.projects.nextProject}
+            className="h-9 w-9 rounded-full flex items-center justify-center text-black transition-colors hover:bg-neutral-100 disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-transparent"
           >
             <IoChevronForward size={16} />
           </button>

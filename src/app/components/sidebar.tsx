@@ -7,6 +7,7 @@ import { Dock, DockIcon } from "./magicui/dock";
 import { TbBrandGmail } from "react-icons/tb";
 import { useContext } from "react";
 import { UIContext } from "@/context/ui-context";
+import { useLanguage } from "@/context/language-context";
 import { RiMenu5Fill } from "react-icons/ri";
 import { IoCloseOutline } from "react-icons/io5";
 import { useState } from "react";
@@ -17,7 +18,8 @@ export default function SideBar() {
     if (!uiContext) {
         throw new Error('SomeComponent must be used within a MyProvider');
     }
-    const { pos, setPos, openPos } = uiContext;
+    const { pos, openPos } = uiContext;
+    const { t } = useLanguage();
     const [drawerOpen, setDrawerOpen] = useState(false)
 
     return (
@@ -38,9 +40,9 @@ export default function SideBar() {
                     </div>
                     <div className="font-black text-2xl lg:text-3xl cursor-pointer" onClick={() => { openPos(0); setDrawerOpen(false) }}>Saïd_</div>
                 </div>
-                <ShimmerButton className="block lg:hidden" onClick={() => openPos(6)}>
-                    <span className="whitespace-pre-wrap text-center text-sm font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-                        Contact me
+                <ShimmerButton className="block lg:hidden px-4 py-2" onClick={() => openPos(6)}>
+                    <span className="whitespace-pre-wrap text-center text-xs font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-sm">
+                        {t.nav.contactMe}
                     </span>
                 </ShimmerButton>
             </div>
@@ -48,28 +50,28 @@ export default function SideBar() {
             <div onClick={() => setDrawerOpen(false)} className="pt-2">
                 <ul className="flex flex-col items-center justify-center gap-20">
                     <li onClick={() => openPos(0)}>
-                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">About me
+                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">{t.nav.about}
                             <div className={`h-px transition-all duration-500 bg-black ${pos == 0 ? 'w-full' : 'w-0'} `}></div>
                         </Link>
                     </li>
                     <li onClick={() => openPos(1)}>
-                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Projects
+                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">{t.nav.projects}
                             <div className={`h-px transition-all duration-500 bg-black ${pos == 1 ? 'w-full' : 'w-0'} `}></div></Link>
                     </li>
                     <li onClick={() => openPos(2)}>
-                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Experiences
+                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">{t.nav.experiences}
                             <div className={`h-px transition-all duration-500 bg-black ${pos == 2 ? 'w-full' : 'w-0'} `}></div></Link>
                     </li>
                     <li onClick={() => openPos(3)}>
-                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Skills
+                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">{t.nav.skills}
                             <div className={`h-px transition-all duration-500 bg-black ${pos == 3 ? 'w-full' : 'w-0'} `}></div></Link>
                     </li>
                     <li onClick={() => openPos(4)}>
-                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Education
+                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">{t.nav.education}
                             <div className={`h-px transition-all duration-500 bg-black ${pos == 4 ? 'w-full' : 'w-0'} `}></div></Link>
                     </li>
                     <li onClick={() => openPos(5)}>
-                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Photos
+                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">{t.nav.photos}
                             <div className={`h-px transition-all duration-500 bg-black ${pos == 5 ? 'w-full' : 'w-0'} `}></div></Link>
                     </li>
                 </ul>

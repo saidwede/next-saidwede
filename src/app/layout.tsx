@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { UIProvider } from "@/context/ui-context";
+import { LanguageProvider } from "@/context/language-context";
 import { GoogleAnalytics } from '@next/third-parties/google'
 import { Analytics } from '@vercel/analytics/react';
 const inter = Inter({ subsets: ["latin"] });
@@ -19,9 +20,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <UIProvider>
-        {children}
-        </UIProvider>
+        <LanguageProvider>
+          <UIProvider>
+            {children}
+          </UIProvider>
+        </LanguageProvider>
         <Analytics />
       </body>
       <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_MEASUREMENT_ID || ''}/>
