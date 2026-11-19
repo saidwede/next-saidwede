@@ -30,7 +30,7 @@ export default function Banner(){
         setCollapsed(!collapsed);
     }
     return (
-        <div className="flex justify-center h-screen pb-40 lg:pb-0">
+        <div className="flex justify-center min-h-screen pb-40 lg:pb-0">
             <div className="flex flex-col-reverse justify-end lg:justify-center lg:flex-row-reverse items-center gap-10 xl:gap-20 p-5 pt-20 lg:pt-0 pb-20 lg:pb-0">
                 <div className="grid gap-2">
                     <p className="text-black">Hello, I am</p>
@@ -40,7 +40,7 @@ export default function Banner(){
                     </motion.div>
                     <motion.p initial={{ fontSize: isMobile ? "1.3rem" : "1.9rem" }} animate={{ fontSize: collapsed ? isMobile ? "1.3rem" : "1.9rem" : isMobile ? "1rem" : "1.3rem" }} transition={{ duration: 0.7 }} className=" max-w-[600px] text-black leading-tight  font-extralight">
                         An AI/ML Engineer and senior Full-Stack Developer building AI-powered digital solutions.
-                        <span onClick={toggleCollapse} className="ml-2 font-bold text-xl inline-flex justify-center items-center bg-black rounded-full p-1 cursor-pointer">
+                        <span onClick={toggleCollapse} className="ml-2 font-bold text-xl inline-flex justify-center items-center bg-black rounded-full cursor-pointer h-7 w-7">
                             <BiChevronDown className="animate-bounce text-white text-xl lg:text-2xl" />
                         </span>
                     </motion.p>
@@ -55,7 +55,7 @@ export default function Banner(){
                                 </span>
                             </ShimmerButton>
                         </a> */}
-                        <ShimmerButton className="shadow-2xl" onClick={() => openPos(4)}>
+                        <ShimmerButton className="shadow-2xl" onClick={() => openPos(6)}>
                             <span className="whitespace-pre-wrap text-center text-sm font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
                                 Contact me
                             </span>

@@ -12,16 +12,19 @@ import { IoCloseOutline } from "react-icons/io5";
 import { useState } from "react";
 import ShimmerButton from "./magicui/shimmer-button";
 
-export default function SideBar(){
+export default function SideBar() {
     const uiContext = useContext(UIContext)
     if (!uiContext) {
         throw new Error('SomeComponent must be used within a MyProvider');
     }
     const { pos, setPos, openPos } = uiContext;
     const [drawerOpen, setDrawerOpen] = useState(false)
-    
+
     return (
-        <div className={`fixed w-full lg:w-auto z-40 left-0 top-0 px-4 lg:pl-16 py-4 lg:py-20 overflow-hidden lg:overflow-visible ${drawerOpen ? 'h-full' : 'h-20'} transition-all duration-500 lg:h-screen items-center flex flex-col justify-between bg-white`}>
+        <div
+            data-scroll-lock={drawerOpen ? "true" : undefined}
+            className={`fixed w-full lg:w-auto z-40 left-0 top-0 px-4 lg:pl-16 py-4 lg:py-20 overflow-hidden lg:overflow-visible ${drawerOpen ? 'h-full' : 'h-20'} transition-all duration-500 lg:h-screen items-center flex flex-col justify-between bg-white`}
+        >
             <div className="w-full flex justify-between">
                 <div className="flex items-center gap-5">
                     <div className="inline-block lg:hidden" onClick={() => setDrawerOpen(!drawerOpen)}>
@@ -31,35 +34,43 @@ export default function SideBar(){
                         {drawerOpen && (
                             <IoCloseOutline className="text-2xl" />
                         )}
-                        
+
                     </div>
-                    <div className="font-black text-2xl lg:text-3xl cursor-pointer" onClick={() => {openPos(0); setDrawerOpen(false)}}>Saïd_</div>
+                    <div className="font-black text-2xl lg:text-3xl cursor-pointer" onClick={() => { openPos(0); setDrawerOpen(false) }}>Saïd_</div>
                 </div>
-                <ShimmerButton className="block lg:hidden" onClick={() => openPos(4)}>
+                <ShimmerButton className="block lg:hidden" onClick={() => openPos(6)}>
                     <span className="whitespace-pre-wrap text-center text-sm font-light leading-none tracking-tight text-white dark:from-white dark:to-slate-900/10 lg:text-lg">
-                    Contact me
+                        Contact me
                     </span>
                 </ShimmerButton>
             </div>
-            
+
             <div onClick={() => setDrawerOpen(false)} className="pt-2">
                 <ul className="flex flex-col items-center justify-center gap-20">
                     <li onClick={() => openPos(0)}>
-                    <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">About me
-                        <div className={`h-px transition-all duration-500 bg-black ${pos == 0 ? 'w-full' : 'w-0'} `}></div>
-                    </Link>
-                    </li>
-                    <li onClick={() => openPos(2)}>
-                    <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Experiences
-                    <div className={`h-px transition-all duration-500 bg-black ${pos == 2 ? 'w-full' : 'w-0'} `}></div></Link>
+                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">About me
+                            <div className={`h-px transition-all duration-500 bg-black ${pos == 0 ? 'w-full' : 'w-0'} `}></div>
+                        </Link>
                     </li>
                     <li onClick={() => openPos(1)}>
-                    <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Skills
-                    <div className={`h-px transition-all duration-500 bg-black ${pos == 1 ? 'w-full' : 'w-0'} `}></div></Link>
+                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Projects
+                            <div className={`h-px transition-all duration-500 bg-black ${pos == 1 ? 'w-full' : 'w-0'} `}></div></Link>
+                    </li>
+                    <li onClick={() => openPos(2)}>
+                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Experiences
+                            <div className={`h-px transition-all duration-500 bg-black ${pos == 2 ? 'w-full' : 'w-0'} `}></div></Link>
                     </li>
                     <li onClick={() => openPos(3)}>
-                    <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Education
-                    <div className={`h-px transition-all duration-500 bg-black ${pos == 3 ? 'w-full' : 'w-0'} `}></div></Link>
+                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Skills
+                            <div className={`h-px transition-all duration-500 bg-black ${pos == 3 ? 'w-full' : 'w-0'} `}></div></Link>
+                    </li>
+                    <li onClick={() => openPos(4)}>
+                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Education
+                            <div className={`h-px transition-all duration-500 bg-black ${pos == 4 ? 'w-full' : 'w-0'} `}></div></Link>
+                    </li>
+                    <li onClick={() => openPos(5)}>
+                        <Link href="#" className="inline-flex flex-col px-2 items-center justify-center">Photos
+                            <div className={`h-px transition-all duration-500 bg-black ${pos == 5 ? 'w-full' : 'w-0'} `}></div></Link>
                     </li>
                 </ul>
             </div>
@@ -81,7 +92,7 @@ export default function SideBar(){
                         </a>
                     </DockIcon>
                     <DockIcon >
-                        <Link onClick={() => openPos(4)} href="#" className="h-10 w-10 bg-black text-white rounded-full inline-flex justify-center items-center text-2xl">
+                        <Link onClick={() => openPos(6)} href="#" className="h-10 w-10 bg-black text-white rounded-full inline-flex justify-center items-center text-2xl">
                             <TbBrandGmail />
                         </Link>
                     </DockIcon>

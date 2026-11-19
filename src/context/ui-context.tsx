@@ -1,6 +1,6 @@
 "use client"
 // context/MyContext.tsx
-import { createContext, useState, ReactNode, Dispatch, SetStateAction } from 'react';
+import { createContext, useState, useCallback, ReactNode, Dispatch, SetStateAction } from 'react';
 
 // Define the type for the context state
 interface UIContextState {
@@ -9,8 +9,8 @@ interface UIContextState {
   pos: number;
   setPos: Dispatch<SetStateAction<number>>;
   sectionRotate: number[];
-    setSectionRotate: Dispatch<SetStateAction<number[]>>;
-  openPos: Function
+  setSectionRotate: Dispatch<SetStateAction<number[]>>;
+  openPos: (position: number) => void;
 }
 
 // Create the context with a default value
@@ -30,22 +30,20 @@ const UIProvider = ({ children }: UIProviderProps) => {
     90,
     90,
     90,
+    90,
+    90
   ])
-  function openPos(position: number){
-    const rotations = [...sectionRotate]
-    rotations.forEach((element, index) => {
-      if(position == index){
-        rotations[index] = 0
-      }else if(index > position){
-        rotations[index] = 90
-      }
-      else if(index < position){
-        rotations[index] = -90
-      }
-    });
-    setPos(position)
-    setSectionRotate(rotations)
-}
+  const openPos = useCallback((position: number) => {
+    setPos(position);
+    setSectionRotate((prev) =>
+      prev.map((_, index) => {
+        if (position === index) {
+          return 0;
+        }
+        return index > position ? 90 : -90;
+      })
+    );
+  }, []);
   return (
     <UIContext.Provider value={{ state, setState, pos, setPos, openPos, sectionRotate, setSectionRotate }}>
       {children}
