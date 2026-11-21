@@ -295,7 +295,7 @@ export const translations: Record<Locale, Translations> = {
       headingLine2: "Stack",
       subtitle:
         "My expertise includes a diverse range of tools and platforms that I leverage to create impactful solutions.",
-      bio: "I am an AI/ML Engineer and Senior Full-Stack Developer with a Master’s degree in Artificial Intelligence. I specialize in building intelligent, scalable, and user-centric applications by combining modern web development with machine learning expertise. With strong experience across front-end and back-end technologies, I design end-to-end solutions that integrate AI models, data-driven systems, and automation. My work spans from developing robust platforms to deploying AI-powered features such as predictive analytics, recommendation systems, and agentic RAG solutions using OpenAI and Google models.",
+      bio: "I work across the entire product lifecycle, combining full-stack web and mobile development in TypeScript, Python, Next.js, and Flutter with scalable backend architecture on PostgreSQL, AWS, and Docker. My AI toolkit spans deep learning, computer vision, and agentic orchestration using PyTorch, OpenCV, LangChain, LangGraph, and leading LLM ecosystems to turn complex capabilities into production-ready features.",
     },
     education: {
       kicker: "STUDIED",
@@ -541,7 +541,7 @@ export const translations: Record<Locale, Translations> = {
       headingLine2: "Technique",
       subtitle:
         "Mon expertise couvre un large éventail d'outils et de plateformes que j'exploite pour concevoir des solutions à fort impact.",
-      bio: "Je suis Ingénieur IA/ML et Développeur Full-Stack Senior, titulaire d'un Master of Science en Intelligence Artificielle. Je conçois des applications intelligentes, évolutives et centrées utilisateur en combinant développement web moderne et expertise en machine learning. Fort d'une solide expérience front-end et back-end, j'élabore des solutions complètes intégrant modèles d'IA, systèmes orientés données et automatisation — du développement de plateformes robustes au déploiement de fonctionnalités avancées telles que l'analyse prédictive, les systèmes de recommandation et les architectures RAG agentiques avec les modèles OpenAI et Google.",
+      bio: "J'interviens sur l'ensemble du cycle de vie produit, alliant le développement web et mobile full-stack en TypeScript, Python, Next.js et Flutter à des architectures backend évolutives sur PostgreSQL, AWS et Docker. Mon expertise en IA couvre le deep learning, la vision par ordinateur et l'orchestration d'agents avec PyTorch, OpenCV, LangChain, LangGraph et les principaux écosystèmes LLM pour transformer des technologies complexes en fonctionnalités prêtes pour la production.",
     },
     education: {
       kicker: "FORMATION",

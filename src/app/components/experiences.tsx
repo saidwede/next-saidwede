@@ -9,7 +9,7 @@ export default function Experiences() {
     <div className="pt-24 pb-20 lg:py-0 lg:flex min-h-screen justify-center lg:items-start lg:gap-12 xl:gap-16 px-5 lg:px-10 xl:px-14">
       {/* Left Sticky Heading */}
       <div className="pb-12 lg:pb-0 lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col lg:justify-center lg:shrink-0">
-        <p className="uppercase tracking-widest text-xs font-medium text-neutral-500 text-left lg:text-right mb-2">
+        <p className="uppercase text-left lg:text-right">
           {t.experiences.kicker}
         </p>
         <p className="text-left lg:text-right font-bold text-4xl sm:text-5xl xl:text-6xl text-neutral-400 leading-tight">

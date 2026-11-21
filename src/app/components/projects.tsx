@@ -487,7 +487,7 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
     >
       {/* Header */}
       <div>
-        <p className="uppercase tracking-widest text-xs font-medium text-neutral-500">
+        <p className="uppercase">
           {t.projects.kicker}
         </p>
         <h2 className="text-2xl lg:text-3xl font-bold text-black mt-1">
