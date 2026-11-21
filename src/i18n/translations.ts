@@ -111,8 +111,8 @@ export const translations: Record<Locale, Translations> = {
     banner: {
       greeting: "Hello, I am",
       subtitle:
-        "An AI/ML Engineer and senior Full-Stack Developer building AI-powered digital solutions.",
-      bio: "I am an AI/ML Engineer and Senior Full-Stack Developer with a Master’s degree in Artificial Intelligence. I specialize in building intelligent, scalable, and user-centric applications by combining modern web development with machine learning expertise. With strong experience across front-end and back-end technologies, I design end-to-end solutions that integrate AI models, data-driven systems, and automation. My work spans from developing robust platforms to deploying AI-powered features such as predictive analytics, recommendation systems, and agentic RAG solutions using OpenAI and Google models.",
+        "An AI/ML Engineer, Senior Software Architect, and Product Founder.",
+      bio: "In the era of AI generated code, I bring the architectural rigor needed to turn ambitious ideas into stable, production grade systems. I combine deep vertical expertise, spanning industrial computing, full-stack software architecture, and applied AI/ML with the product vision and execution mindset of a founder.",
       contactMe: "Contact me",
     },
     projects: {
@@ -128,22 +128,22 @@ export const translations: Record<Locale, Translations> = {
       nextImage: "Next image",
       items: {
         grafyme: {
-          title: "Grafy.me",
+          title: "GrafyMe",
           description:
-            "An interactive browser-based visual design and graphics creation platform featuring a responsive canvas workspace, real-time asset management, and cloud persistence.",
-          skills: ["Next.js", "Firebase", "Konvajs"],
+            "GrafyMe is a campaign visual creation platform I founded and architected to push campaign visuals far beyond traditional photo frames. Built end-to-end from product strategy to scalable cloud infrastructure, it brings studio-grade customization to every asset, combining automatic subject cutout, custom outlines, photo filters, and layered visual effects so anyone can produce distinctive, high-impact campaign visuals in seconds.",
+          skills: ["Next.js", "Firebase", "Konvajs", "Fast Api"],
         },
         ersy: {
-          title: "Ersy Artists",
+          title: "Ersy",
           description:
-            "A comprehensive artist discovery and biography directory backed by a relational PHP and MySQL architecture with fast search and dynamic browsing.",
-          skills: ["JavaScript", "JQuery", "PHP", "MySQL"],
+            "An artist discovery and biography platform designed like a modern, Spotify-inspired streaming experience with integrated music videos. It lets listeners explore artist profiles, dive into their stories, and seamlessly switch between audio tracks and video clips through a sleek, intuitive player.",
+          skills: ["JavaScript", "JQuery", "PHP", "MySQL", "PWA"],
         },
         gogochap: {
           title: "GOGO Chap",
           description:
-            "A meal delivery mobile application built with Flutter, connecting customers with local restaurants through a fast menu browsing, ordering, and delivery experience.",
-          skills: ["Flutter", "Dart", "Mobile"],
+            "A mobile food delivery platform I co-founded and lead as CTO, connecting hungry customers with local restaurants. Built to make local dining effortless, it delivers a seamless experience from menu discovery and instant ordering to real-time doorstep delivery.",
+          skills: ["Flutter", "Dart", "iOS", "Android"],
         },
         alyahnightwear: {
           title: "Alyah Nightwear",
@@ -357,8 +357,8 @@ export const translations: Record<Locale, Translations> = {
     banner: {
       greeting: "Bonjour, je suis",
       subtitle:
-        "Ingénieur IA/ML et Développeur Full-Stack Senior concevant des solutions numériques propulsées par l'IA.",
-      bio: "Je suis Ingénieur IA/ML et Développeur Full-Stack Senior, titulaire d'un Master of Science en Intelligence Artificielle. Je conçois des applications intelligentes, évolutives et centrées utilisateur en combinant développement web moderne et expertise en machine learning. Fort d'une solide expérience front-end et back-end, j'élabore des solutions complètes intégrant modèles d'IA, systèmes orientés données et automatisation — du développement de plateformes robustes au déploiement de fonctionnalités avancées telles que l'analyse prédictive, les systèmes de recommandation et les architectures RAG agentiques avec les modèles OpenAI et Google.",
+        "Ingénieur IA/ML, Architecte Logiciel Senior et Fondateur de Produits Numériques.",
+      bio: "À l'ère du code généré par l'IA, j'apporte la rigueur architecturale nécessaire pour transformer des idées ambitieuses en systèmes stables et robustes. Je combine une maîtrise technique verticale, de l'informatique industrielle à l'ingénierie logicielle et IA/ML, avec la vision produit et l'exigence d'exécution d'un fondateur.",
       contactMe: "Me contacter",
     },
     projects: {
@@ -374,22 +374,22 @@ export const translations: Record<Locale, Translations> = {
       nextImage: "Image suivante",
       items: {
         grafyme: {
-          title: "Grafy.me",
+          title: "GrafyMe",
           description:
-            "Plateforme SaaS interactive de création graphique dans le navigateur, dotée d'un espace de travail sur canvas réactif, d'une gestion d'assets en temps réel et d'une sauvegarde cloud.",
-          skills: ["Next.js", "Firebase", "Konvajs"],
+            "GrafyMe est une plateforme de création de visuels de campagne que j'ai fondée et architecturée pour dépasser les simples cadres photo traditionnels. Conçue de bout en bout, de la vision produit à l'infrastructure cloud scalable, elle apporte un niveau de personnalisation studio inédit à chaque création, combinant détourage précis du sujet, ajout de contours, filtres photo et effets visuels pour produire des visuels de campagne singuliers et percutants en quelques secondes.",
+          skills: ["Next.js", "Firebase", "Konvajs", "Fast Api"],
         },
         ersy: {
-          title: "Ersy Artists",
+          title: "Ersy",
           description:
-            "Annuaire complet de découverte et de biographies d'artistes reposant sur une architecture PHP et MySQL relationnelle, avec recherche rapide et navigation dynamique.",
-          skills: ["JavaScript", "JQuery", "PHP", "MySQL"],
+            "Une plateforme de découverte musicale et de biographies d'artistes pensée comme une expérience de streaming moderne à la Spotify, enrichie de clips vidéo. Elle permet d'explorer les parcours des artistes et de naviguer avec fluidité entre leurs morceaux et leurs vidéos grâce à un lecteur moderne et intuitif.",
+          skills: ["JavaScript", "JQuery", "PHP", "MySQL", "PWA"],
         },
         gogochap: {
           title: "GOGO Chap",
           description:
-            "Application mobile de livraison de repas conçue avec Flutter, reliant les clients aux restaurants locaux à travers une expérience fluide de découverte de menus, commande et livraison.",
-          skills: ["Flutter", "Dart", "Mobile"],
+            "Une application mobile de livraison de repas que j'ai cofondée et dont je dirige la vision technique en tant que CTO, reliant les clients aux meilleurs restaurants locaux. Pensée pour simplifier la restauration au quotidien, elle offre une expérience fluide de la découverte des menus jusqu'à la commande et la livraison rapide.",
+          skills: ["Flutter", "Dart", "iOS", "Android"],
         },
         alyahnightwear: {
           title: "Alyah Nightwear",
