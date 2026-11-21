@@ -22,10 +22,17 @@ export interface SteppedSectionHandle {
   resetToEdge: (edge: "start" | "end") => void;
 }
 
+interface ProjectImageAsset {
+  full: string;
+  thumb: string;
+  width: number;
+  height: number;
+}
+
 interface ProjectConfig {
   id: ProjectId;
   url: string;
-  images: string[];
+  images: ProjectImageAsset[];
   portrait?: boolean;
 }
 
@@ -34,44 +41,116 @@ const projects: ProjectConfig[] = [
     id: "grafyme",
     url: "https://grafy.me",
     images: [
-      "/img/grafyme/photo04.png",
-      "/img/grafyme/photo01.png",
-      "/img/grafyme/photo05.png",
+      {
+        full: "/img/grafyme/photo04.png",
+        thumb: "/img/thumbs/projects/grafyme/photo04.webp",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        full: "/img/grafyme/photo01.png",
+        thumb: "/img/thumbs/projects/grafyme/photo01.webp",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        full: "/img/grafyme/photo05.png",
+        thumb: "/img/thumbs/projects/grafyme/photo05.webp",
+        width: 1920,
+        height: 1080,
+      },
     ],
   },
   {
     id: "ersy",
     url: "https://ersy.com/artists",
     images: [
-      "/img/ersy/photo1.png",
-      "/img/ersy/photo2.png",
-      "/img/ersy/photo3.png",
+      {
+        full: "/img/ersy/photo1.png",
+        thumb: "/img/thumbs/projects/ersy/photo1.webp",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        full: "/img/ersy/photo2.png",
+        thumb: "/img/thumbs/projects/ersy/photo2.webp",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        full: "/img/ersy/photo3.png",
+        thumb: "/img/thumbs/projects/ersy/photo3.webp",
+        width: 1920,
+        height: 1080,
+      },
     ],
   },
   {
     id: "gogochap",
     url: "https://www.gogochap.com/telecharger",
-    images: ["/img/gogochap/Home.png", "/img/gogochap/Menus.png"],
+    images: [
+      {
+        full: "/img/gogochap/Home.png",
+        thumb: "/img/thumbs/projects/gogochap/Home.webp",
+        width: 393,
+        height: 867,
+      },
+      {
+        full: "/img/gogochap/Menus.png",
+        thumb: "/img/thumbs/projects/gogochap/Menus.webp",
+        width: 393,
+        height: 942,
+      },
+    ],
     portrait: true,
   },
   {
     id: "alyahnightwear",
     url: "https://www.alyahnightwear.com",
     images: [
-      "/img/alyahnightwear/photo01.png",
-      "/img/alyahnightwear/photo02.png",
-      "/img/alyahnightwear/photo03.png",
+      {
+        full: "/img/alyahnightwear/photo01.png",
+        thumb: "/img/thumbs/projects/alyahnightwear/photo01.webp",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        full: "/img/alyahnightwear/photo02.png",
+        thumb: "/img/thumbs/projects/alyahnightwear/photo02.webp",
+        width: 1920,
+        height: 1080,
+      },
+      {
+        full: "/img/alyahnightwear/photo03.png",
+        thumb: "/img/thumbs/projects/alyahnightwear/photo03.webp",
+        width: 1920,
+        height: 1080,
+      },
     ],
   },
   {
     id: "root-capture",
     url: "https://root-capture.vercel.app",
-    images: ["/img/root_capture.png"],
+    images: [
+      {
+        full: "/img/root_capture.png",
+        thumb: "/img/thumbs/projects/root_capture.webp",
+        width: 3360,
+        height: 2100,
+      },
+    ],
   },
   {
     id: "alarm-valet",
     url: "http://alarmvalet.com/?k=a0000",
-    images: ["/img/alarm.png"],
+    images: [
+      {
+        full: "/img/alarm.png",
+        thumb: "/img/thumbs/projects/alarm.webp",
+        width: 3360,
+        height: 2100,
+      },
+    ],
   },
 ];
 
@@ -91,18 +170,16 @@ const slideVariants = {
 };
 
 interface BentoTileProps {
-  src: string;
+  image: ProjectImageAsset;
   alt: string;
-  sizes: string;
   priority?: boolean;
   extraCount?: number;
   onClick: () => void;
 }
 
 function BentoTile({
-  src,
+  image,
   alt,
-  sizes,
   priority = false,
   extraCount = 0,
   onClick,
@@ -115,12 +192,13 @@ function BentoTile({
       className="group relative block w-full overflow-hidden rounded-lg bg-neutral-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
     >
       <Image
-        src={src}
+        src={image.thumb}
         alt={alt}
-        width={1920}
-        height={1080}
-        sizes={sizes}
-        priority={priority}
+        width={image.width}
+        height={image.height}
+        unoptimized
+        decoding="async"
+        loading={priority ? "eager" : "lazy"}
         className="block w-full h-auto transition-transform duration-500 ease-out group-hover:scale-[1.03]"
       />
       <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
@@ -135,7 +213,7 @@ function BentoTile({
 
 interface ProjectBentoGridProps {
   title: string;
-  images: string[];
+  images: ProjectImageAsset[];
   portrait?: boolean;
   isFirstProject: boolean;
   onSelectImage: (index: number) => void;
@@ -155,11 +233,11 @@ function ProjectBentoGrid({
   if (portrait) {
     return (
       <div className="flex items-center justify-center gap-5 sm:gap-7 lg:gap-9 w-full pt-4 pb-10">
-        {visible.map((imgSrc, index) => {
+        {visible.map((img, index) => {
           const isLastWithMore = index === count - 1 && extraCount > 0;
           return (
             <button
-              key={imgSrc}
+              key={img.full}
               type="button"
               onClick={() => onSelectImage(index)}
               aria-label={`Inspect ${title} preview ${index + 1}`}
@@ -194,11 +272,12 @@ function ProjectBentoGrid({
                   />
 
                   <Image
-                    src={imgSrc}
+                    src={img.thumb}
                     alt={`${title} preview ${index + 1}`}
                     fill
-                    sizes="(max-width: 1024px) 45vw, 240px"
-                    priority={isFirstProject && index < 2}
+                    unoptimized
+                    decoding="async"
+                    loading="eager"
                     className="object-cover object-top"
                   />
 
@@ -223,13 +302,12 @@ function ProjectBentoGrid({
     );
   }
 
-  const renderTile = (index: number, sizes: string, isLast = false) => (
+  const renderTile = (index: number, isLast = false) => (
     <BentoTile
-      key={visible[index]}
-      src={visible[index]}
+      key={visible[index].full}
+      image={visible[index]}
       alt={`${title} preview ${index + 1}`}
-      sizes={sizes}
-      priority={isFirstProject && index < 3}
+      priority={isFirstProject || index === 0}
       extraCount={isLast ? extraCount : 0}
       onClick={() => onSelectImage(index)}
     />
@@ -237,17 +315,15 @@ function ProjectBentoGrid({
 
   if (count === 1) {
     return (
-      <div className="w-full overflow-hidden rounded-xl">
-        {renderTile(0, "(max-width: 1024px) 100vw, 55vw")}
-      </div>
+      <div className="w-full overflow-hidden rounded-xl">{renderTile(0)}</div>
     );
   }
 
   if (count === 2) {
     return (
       <div className="grid grid-cols-2 gap-2 w-full">
-        {renderTile(0, "(max-width: 1024px) 50vw, 28vw")}
-        {renderTile(1, "(max-width: 1024px) 50vw, 28vw")}
+        {renderTile(0)}
+        {renderTile(1)}
       </div>
     );
   }
@@ -255,15 +331,13 @@ function ProjectBentoGrid({
   if (count === 3) {
     return (
       <div className="flex gap-2 items-start w-full">
-        <div style={{ width: "calc(66.6667% - 0.6px)" }}>
-          {renderTile(0, "(max-width: 1024px) 67vw, 38vw")}
-        </div>
+        <div style={{ width: "calc(66.6667% - 0.6px)" }}>{renderTile(0)}</div>
         <div
           className="flex flex-col gap-2"
           style={{ width: "calc(33.3333% - 7.4px)" }}
         >
-          {renderTile(1, "(max-width: 1024px) 33vw, 20vw")}
-          {renderTile(2, "(max-width: 1024px) 33vw, 20vw")}
+          {renderTile(1)}
+          {renderTile(2)}
         </div>
       </div>
     );
@@ -272,16 +346,14 @@ function ProjectBentoGrid({
   if (count === 4) {
     return (
       <div className="flex gap-2 items-start w-full">
-        <div style={{ width: "calc(75% + 1.1px)" }}>
-          {renderTile(0, "(max-width: 1024px) 75vw, 42vw")}
-        </div>
+        <div style={{ width: "calc(75% + 1.1px)" }}>{renderTile(0)}</div>
         <div
           className="flex flex-col gap-2"
           style={{ width: "calc(25% - 9.1px)" }}
         >
-          {renderTile(1, "(max-width: 1024px) 25vw, 15vw")}
-          {renderTile(2, "(max-width: 1024px) 25vw, 15vw")}
-          {renderTile(3, "(max-width: 1024px) 25vw, 15vw")}
+          {renderTile(1)}
+          {renderTile(2)}
+          {renderTile(3)}
         </div>
       </div>
     );
@@ -291,39 +363,38 @@ function ProjectBentoGrid({
     return (
       <div className="flex flex-col gap-2 w-full">
         <div className="grid grid-cols-2 gap-2">
-          {renderTile(0, "(max-width: 1024px) 50vw, 28vw")}
-          {renderTile(1, "(max-width: 1024px) 50vw, 28vw")}
+          {renderTile(0)}
+          {renderTile(1)}
         </div>
         <div className="grid grid-cols-3 gap-2">
-          {renderTile(2, "(max-width: 1024px) 33vw, 19vw")}
-          {renderTile(3, "(max-width: 1024px) 33vw, 19vw")}
-          {renderTile(4, "(max-width: 1024px) 33vw, 19vw")}
+          {renderTile(2)}
+          {renderTile(3)}
+          {renderTile(4)}
         </div>
       </div>
     );
   }
 
   // 6 images: 3 distinct tile sizes (60% hero, two 40% right, three 20% bottom-left)
-  // Exact rectangular outer silhouette with 100% original aspect ratio on every image
   return (
     <div className="flex gap-2 items-start w-full">
       <div
         className="flex flex-col gap-2"
         style={{ width: "calc(60% - 3.2px)" }}
       >
-        {renderTile(0, "(max-width: 1024px) 60vw, 35vw")}
+        {renderTile(0)}
         <div className="grid grid-cols-3 gap-2">
-          {renderTile(3, "(max-width: 1024px) 20vw, 12vw")}
-          {renderTile(4, "(max-width: 1024px) 20vw, 12vw")}
-          {renderTile(5, "(max-width: 1024px) 20vw, 12vw", true)}
+          {renderTile(3)}
+          {renderTile(4)}
+          {renderTile(5, true)}
         </div>
       </div>
       <div
         className="flex flex-col gap-2"
         style={{ width: "calc(40% - 4.8px)" }}
       >
-        {renderTile(1, "(max-width: 1024px) 40vw, 23vw")}
-        {renderTile(2, "(max-width: 1024px) 40vw, 23vw")}
+        {renderTile(1)}
+        {renderTile(2)}
       </div>
     </div>
   );
@@ -336,6 +407,7 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
   const [lightboxImageIndex, setLightboxImageIndex] = useState<number | null>(
     null
   );
+  const [fullLoaded, setFullLoaded] = useState(false);
   const [mounted, setMounted] = useState(false);
   const activeIndexRef = useRef(0);
   const rootRef = useRef<HTMLDivElement>(null);
@@ -344,9 +416,32 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
     setMounted(true);
   }, []);
 
+  // Silently warm adjacent project thumbnails so horizontal switching is instant
+  useEffect(() => {
+    const neighborIndices = [activeIndex - 1, activeIndex + 1].filter(
+      (idx) => idx >= 0 && idx < projects.length
+    );
+    neighborIndices.forEach((idx) => {
+      projects[idx].images.forEach((img) => {
+        const preloader = new window.Image();
+        preloader.src = img.thumb;
+      });
+    });
+  }, [activeIndex]);
+
   const projectConfig = projects[activeIndex];
   const projectCopy = t.projects.items[projectConfig.id];
   const project = { ...projectConfig, ...projectCopy };
+
+  const openLightbox = useCallback((index: number) => {
+    setFullLoaded(false);
+    setLightboxImageIndex(index);
+  }, []);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxImageIndex(null);
+    setFullLoaded(false);
+  }, []);
 
   const goToProject = useCallback((nextIndex: number, dir?: 1 | -1) => {
     const current = activeIndexRef.current;
@@ -357,6 +452,7 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
     activeIndexRef.current = nextIndex;
     setActiveIndex(nextIndex);
     setLightboxImageIndex(null);
+    setFullLoaded(false);
     const scrollParent = rootRef.current?.parentElement;
     if (scrollParent && scrollParent.scrollTop > 0) {
       scrollParent.scrollTop = 0;
@@ -373,6 +469,7 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
       resetToEdge: (edge: "start" | "end") => {
         const target = edge === "end" ? projects.length - 1 : 0;
         setLightboxImageIndex(null);
+        setFullLoaded(false);
         if (target === activeIndexRef.current) return;
         setSlideDirection(edge === "end" ? -1 : 1);
         activeIndexRef.current = target;
@@ -386,12 +483,14 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
     if (lightboxImageIndex === null) return;
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        setLightboxImageIndex(null);
+        closeLightbox();
       } else if (e.key === "ArrowRight") {
+        setFullLoaded(false);
         setLightboxImageIndex((prev) =>
           prev === null ? null : (prev + 1) % project.images.length
         );
       } else if (e.key === "ArrowLeft") {
+        setFullLoaded(false);
         setLightboxImageIndex((prev) =>
           prev === null
             ? null
@@ -401,23 +500,26 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
     };
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [lightboxImageIndex, project.images.length]);
+  }, [lightboxImageIndex, project.images.length, closeLightbox]);
+
+  const activeLightboxImage =
+    lightboxImageIndex !== null ? project.images[lightboxImageIndex] : null;
 
   const lightbox = mounted
     ? createPortal(
         <AnimatePresence>
-          {lightboxImageIndex !== null && (
+          {activeLightboxImage && lightboxImageIndex !== null && (
             <motion.div
               data-scroll-lock="true"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 backdrop-blur-xl p-4 sm:p-8"
-              onClick={() => setLightboxImageIndex(null)}
+              onClick={closeLightbox}
             >
               <button
                 type="button"
-                onClick={() => setLightboxImageIndex(null)}
+                onClick={closeLightbox}
                 aria-label={t.projects.closePreview}
                 className="absolute top-6 right-6 text-white/70 hover:text-white text-3xl z-50 p-2 transition-colors"
               >
@@ -430,6 +532,7 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
+                      setFullLoaded(false);
                       setLightboxImageIndex(
                         (lightboxImageIndex - 1 + project.images.length) %
                           project.images.length
@@ -444,6 +547,7 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
                     type="button"
                     onClick={(e) => {
                       e.stopPropagation();
+                      setFullLoaded(false);
                       setLightboxImageIndex(
                         (lightboxImageIndex + 1) % project.images.length
                       );
@@ -464,13 +568,28 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
                 className="relative w-full h-full max-w-5xl max-h-[85vh] flex items-center justify-center"
                 onClick={(e) => e.stopPropagation()}
               >
+                {/* Instant cached thumbnail underneath while full-res loads */}
                 <Image
-                  src={project.images[lightboxImageIndex]}
+                  src={activeLightboxImage.thumb}
                   alt={`${project.title} preview ${lightboxImageIndex + 1}`}
                   fill
-                  sizes="90vw"
-                  className="object-contain"
+                  unoptimized
+                  className={`object-contain transition-opacity duration-300 ${
+                    fullLoaded ? "opacity-0" : "opacity-100"
+                  }`}
+                />
+                {/* Full-resolution image */}
+                <Image
+                  src={activeLightboxImage.full}
+                  alt={`${project.title} preview ${lightboxImageIndex + 1}`}
+                  fill
+                  sizes="92vw"
+                  quality={90}
                   priority
+                  onLoad={() => setFullLoaded(true)}
+                  className={`object-contain transition-opacity duration-300 ${
+                    fullLoaded ? "opacity-100" : "opacity-0"
+                  }`}
                 />
               </motion.div>
             </motion.div>
@@ -487,9 +606,7 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
     >
       {/* Header */}
       <div>
-        <p className="uppercase">
-          {t.projects.kicker}
-        </p>
+        <p className="uppercase">{t.projects.kicker}</p>
         <h2 className="text-2xl lg:text-3xl font-bold text-black mt-1">
           {t.projects.heading}
         </h2>
@@ -519,7 +636,7 @@ const Projects = forwardRef<SteppedSectionHandle>(function Projects(_, ref) {
                   images={project.images}
                   portrait={project.portrait}
                   isFirstProject={activeIndex === 0}
-                  onSelectImage={setLightboxImageIndex}
+                  onSelectImage={openLightbox}
                 />
               </div>
 
