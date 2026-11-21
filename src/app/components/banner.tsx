@@ -32,7 +32,7 @@ export default function Banner(){
         setCollapsed(!collapsed);
     }
     return (
-        <div className="flex justify-center min-h-screen pb-40 lg:pb-0">
+        <div className="flex justify-center min-h-screen pb-10 lg:pb-0">
             <div className="flex flex-col-reverse justify-end lg:justify-center lg:flex-row-reverse items-center gap-10 xl:gap-20 p-5 pt-20 lg:pt-0 pb-20 lg:pb-0">
                 <div className="grid gap-2">
                     <p className="text-black">{t.banner.greeting}</p>
