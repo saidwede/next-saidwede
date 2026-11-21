@@ -112,7 +112,7 @@ export const translations: Record<Locale, Translations> = {
       greeting: "Hello, I am",
       subtitle:
         "An AI/ML Engineer, Senior Software Architect, and Product Founder.",
-      bio: "In the era of AI generated code, I bring the architectural rigor needed to turn ambitious ideas into stable, production grade systems. I combine deep vertical expertise, spanning industrial computing, full-stack software architecture, and applied AI/ML with the product vision and execution mindset of a founder.",
+      bio: "In the era of AI generated code, I bring the architectural rigor needed to turn ambitious ideas into stable, production grade systems. I combine deep vertical expertise, spanning electronics, full-stack software architecture, and applied AI/ML with the product vision and execution mindset of a founder.",
       contactMe: "Contact me",
     },
     projects: {
@@ -358,7 +358,7 @@ export const translations: Record<Locale, Translations> = {
       greeting: "Bonjour, je suis",
       subtitle:
         "Ingénieur IA/ML, Architecte Logiciel Senior et Fondateur de Produits Numériques.",
-      bio: "À l'ère du code généré par l'IA, j'apporte la rigueur architecturale nécessaire pour transformer des idées ambitieuses en systèmes stables et robustes. Je combine une maîtrise technique verticale, de l'informatique industrielle à l'ingénierie logicielle et IA/ML, avec la vision produit et l'exigence d'exécution d'un fondateur.",
+      bio: "À l'ère du code généré par l'IA, j'apporte la rigueur architecturale nécessaire pour transformer des idées ambitieuses en systèmes stables et robustes. Je combine une maîtrise technique verticale, de l'électronique à l'ingénierie logicielle et IA/ML, avec la vision produit et l'exigence d'exécution d'un fondateur.",
       contactMe: "Me contacter",
     },
     projects: {
